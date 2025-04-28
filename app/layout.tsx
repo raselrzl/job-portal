@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "job portal",
-  description: "job portal",
+  title: "job lynk",
+  description: "job lynk",
 };
 
 export default function RootLayout({
