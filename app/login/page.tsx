@@ -8,7 +8,7 @@ export default function Login() {
       <div className="flex w-full max-w-sm flex-col gap-6">
       <Link href="/" className="flex items-center gap-2 self-center">
         <Image
-            src="/job.png"
+            src="/job2.png"
             height={30}
             width={50}
             alt="logo image"

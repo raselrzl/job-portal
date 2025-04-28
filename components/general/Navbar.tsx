@@ -8,7 +8,7 @@ export default function Navbar() {
    <nav className=" flex items-center justify-between py-5">
      <Link href="/" className="flex items-center gap-2">
         <Image
-            src="/job.png"
+            src="/job2.png"
             height={20}
             width={40}
             alt="logo image"
