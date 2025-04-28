@@ -27,7 +27,7 @@ export default async function Navbar() {
             <Button>Logout</Button>
           </form>
         ) : (
-          <Link href="/login" className={buttonVariants({variant:"outline", size:"lg"})}>Login</Link>
+          <Link href="/login" className={buttonVariants({variant:"default", size:"lg"})}>Login</Link>
         )}
       </div>
     </nav>

@@ -43,6 +43,7 @@ export default async function LoginForm() {
                   redirectTo: "/",
                 });
               }}
+              className="cursor-pointer"
             >
               <GeneralSubmitButton
                 width="w-full"

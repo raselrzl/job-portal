@@ -30,7 +30,7 @@ export default function GeneralSubmitButton({
       {pending ? (
         <>
           <Loader2 className="size-4 animate-spin" />
-          <span>submitting..</span>
+          <span>Loading...</span>
         </>
       ) : (
         <>
