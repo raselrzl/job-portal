@@ -47,10 +47,10 @@ model Company {
 }
 
 model JobSeeker {
-  id       String @id @default(uuid())
-  name     String
-  about    String
-  linkedId String
+  id     String @id @default(uuid())
+  name   String
+  about  String
+  resume String
 
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @unique

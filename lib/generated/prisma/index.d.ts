@@ -3726,7 +3726,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     about: string | null
-    linkedId: string | null
+    resume: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3736,7 +3736,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     about: string | null
-    linkedId: string | null
+    resume: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3746,7 +3746,7 @@ export namespace Prisma {
     id: number
     name: number
     about: number
-    linkedId: number
+    resume: number
     userId: number
     createdAt: number
     updatedAt: number
@@ -3758,7 +3758,7 @@ export namespace Prisma {
     id?: true
     name?: true
     about?: true
-    linkedId?: true
+    resume?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -3768,7 +3768,7 @@ export namespace Prisma {
     id?: true
     name?: true
     about?: true
-    linkedId?: true
+    resume?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -3778,7 +3778,7 @@ export namespace Prisma {
     id?: true
     name?: true
     about?: true
-    linkedId?: true
+    resume?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -3861,7 +3861,7 @@ export namespace Prisma {
     id: string
     name: string
     about: string
-    linkedId: string
+    resume: string
     userId: string
     createdAt: Date
     updatedAt: Date
@@ -3888,7 +3888,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     about?: boolean
-    linkedId?: boolean
+    resume?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3899,7 +3899,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     about?: boolean
-    linkedId?: boolean
+    resume?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3910,7 +3910,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     about?: boolean
-    linkedId?: boolean
+    resume?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3921,13 +3921,13 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     about?: boolean
-    linkedId?: boolean
+    resume?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type JobSeekerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "about" | "linkedId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["jobSeeker"]>
+  export type JobSeekerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "about" | "resume" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["jobSeeker"]>
   export type JobSeekerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -3947,7 +3947,7 @@ export namespace Prisma {
       id: string
       name: string
       about: string
-      linkedId: string
+      resume: string
       userId: string
       createdAt: Date
       updatedAt: Date
@@ -4378,7 +4378,7 @@ export namespace Prisma {
     readonly id: FieldRef<"JobSeeker", 'String'>
     readonly name: FieldRef<"JobSeeker", 'String'>
     readonly about: FieldRef<"JobSeeker", 'String'>
-    readonly linkedId: FieldRef<"JobSeeker", 'String'>
+    readonly resume: FieldRef<"JobSeeker", 'String'>
     readonly userId: FieldRef<"JobSeeker", 'String'>
     readonly createdAt: FieldRef<"JobSeeker", 'DateTime'>
     readonly updatedAt: FieldRef<"JobSeeker", 'DateTime'>
@@ -8069,7 +8069,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     about: 'about',
-    linkedId: 'linkedId',
+    resume: 'resume',
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -8402,7 +8402,7 @@ export namespace Prisma {
     id?: StringFilter<"JobSeeker"> | string
     name?: StringFilter<"JobSeeker"> | string
     about?: StringFilter<"JobSeeker"> | string
-    linkedId?: StringFilter<"JobSeeker"> | string
+    resume?: StringFilter<"JobSeeker"> | string
     userId?: StringFilter<"JobSeeker"> | string
     createdAt?: DateTimeFilter<"JobSeeker"> | Date | string
     updatedAt?: DateTimeFilter<"JobSeeker"> | Date | string
@@ -8413,7 +8413,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     about?: SortOrder
-    linkedId?: SortOrder
+    resume?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8428,7 +8428,7 @@ export namespace Prisma {
     NOT?: JobSeekerWhereInput | JobSeekerWhereInput[]
     name?: StringFilter<"JobSeeker"> | string
     about?: StringFilter<"JobSeeker"> | string
-    linkedId?: StringFilter<"JobSeeker"> | string
+    resume?: StringFilter<"JobSeeker"> | string
     createdAt?: DateTimeFilter<"JobSeeker"> | Date | string
     updatedAt?: DateTimeFilter<"JobSeeker"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8438,7 +8438,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     about?: SortOrder
-    linkedId?: SortOrder
+    resume?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8454,7 +8454,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"JobSeeker"> | string
     name?: StringWithAggregatesFilter<"JobSeeker"> | string
     about?: StringWithAggregatesFilter<"JobSeeker"> | string
-    linkedId?: StringWithAggregatesFilter<"JobSeeker"> | string
+    resume?: StringWithAggregatesFilter<"JobSeeker"> | string
     userId?: StringWithAggregatesFilter<"JobSeeker"> | string
     createdAt?: DateTimeWithAggregatesFilter<"JobSeeker"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"JobSeeker"> | Date | string
@@ -8857,7 +8857,7 @@ export namespace Prisma {
     id?: string
     name: string
     about: string
-    linkedId: string
+    resume: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutJobSeekerInput
@@ -8867,7 +8867,7 @@ export namespace Prisma {
     id?: string
     name: string
     about: string
-    linkedId: string
+    resume: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8877,7 +8877,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    linkedId?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutJobSeekerNestedInput
@@ -8887,7 +8887,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    linkedId?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8897,7 +8897,7 @@ export namespace Prisma {
     id?: string
     name: string
     about: string
-    linkedId: string
+    resume: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8907,7 +8907,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    linkedId?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8916,7 +8916,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    linkedId?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9398,7 +9398,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     about?: SortOrder
-    linkedId?: SortOrder
+    resume?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9408,7 +9408,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     about?: SortOrder
-    linkedId?: SortOrder
+    resume?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9418,7 +9418,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     about?: SortOrder
-    linkedId?: SortOrder
+    resume?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10083,7 +10083,7 @@ export namespace Prisma {
     id?: string
     name: string
     about: string
-    linkedId: string
+    resume: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10092,7 +10092,7 @@ export namespace Prisma {
     id?: string
     name: string
     about: string
-    linkedId: string
+    resume: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10214,7 +10214,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    linkedId?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10223,7 +10223,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    linkedId?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
