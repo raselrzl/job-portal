@@ -27,18 +27,18 @@ model User {
 }
 
 enum UserType {
-  Company
+  COMPANY
   JOB_SEEKER
 }
 
 model Company {
-  id       String @id @default(uuid())
+  id       String  @id @default(uuid())
   name     String
   location String
   about    String
   logo     String
   website  String
-  xAccount String
+  xAccount String?
 
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @unique

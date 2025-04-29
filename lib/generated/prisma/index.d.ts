@@ -49,7 +49,7 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  */
 export namespace $Enums {
   export const UserType: {
-  Company: 'Company',
+  COMPANY: 'COMPANY',
   JOB_SEEKER: 'JOB_SEEKER'
 };
 
@@ -2759,7 +2759,7 @@ export namespace Prisma {
     about: string
     logo: string
     website: string
-    xAccount: string
+    xAccount: string | null
     userId: string
     createdAt: Date
     updatedAt: Date
@@ -2860,7 +2860,7 @@ export namespace Prisma {
       about: string
       logo: string
       website: string
-      xAccount: string
+      xAccount: string | null
       userId: string
       createdAt: Date
       updatedAt: Date
@@ -8325,7 +8325,7 @@ export namespace Prisma {
     about?: StringFilter<"Company"> | string
     logo?: StringFilter<"Company"> | string
     website?: StringFilter<"Company"> | string
-    xAccount?: StringFilter<"Company"> | string
+    xAccount?: StringNullableFilter<"Company"> | string | null
     userId?: StringFilter<"Company"> | string
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
@@ -8339,7 +8339,7 @@ export namespace Prisma {
     about?: SortOrder
     logo?: SortOrder
     website?: SortOrder
-    xAccount?: SortOrder
+    xAccount?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8357,7 +8357,7 @@ export namespace Prisma {
     about?: StringFilter<"Company"> | string
     logo?: StringFilter<"Company"> | string
     website?: StringFilter<"Company"> | string
-    xAccount?: StringFilter<"Company"> | string
+    xAccount?: StringNullableFilter<"Company"> | string | null
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8370,7 +8370,7 @@ export namespace Prisma {
     about?: SortOrder
     logo?: SortOrder
     website?: SortOrder
-    xAccount?: SortOrder
+    xAccount?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8389,7 +8389,7 @@ export namespace Prisma {
     about?: StringWithAggregatesFilter<"Company"> | string
     logo?: StringWithAggregatesFilter<"Company"> | string
     website?: StringWithAggregatesFilter<"Company"> | string
-    xAccount?: StringWithAggregatesFilter<"Company"> | string
+    xAccount?: StringNullableWithAggregatesFilter<"Company"> | string | null
     userId?: StringWithAggregatesFilter<"Company"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
@@ -8770,7 +8770,7 @@ export namespace Prisma {
     about: string
     logo: string
     website: string
-    xAccount: string
+    xAccount?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCompanyInput
@@ -8783,7 +8783,7 @@ export namespace Prisma {
     about: string
     logo: string
     website: string
-    xAccount: string
+    xAccount?: string | null
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8796,7 +8796,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     website?: StringFieldUpdateOperationsInput | string
-    xAccount?: StringFieldUpdateOperationsInput | string
+    xAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCompanyNestedInput
@@ -8809,7 +8809,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     website?: StringFieldUpdateOperationsInput | string
-    xAccount?: StringFieldUpdateOperationsInput | string
+    xAccount?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8822,7 +8822,7 @@ export namespace Prisma {
     about: string
     logo: string
     website: string
-    xAccount: string
+    xAccount?: string | null
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8835,7 +8835,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     website?: StringFieldUpdateOperationsInput | string
-    xAccount?: StringFieldUpdateOperationsInput | string
+    xAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8847,7 +8847,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     website?: StringFieldUpdateOperationsInput | string
-    xAccount?: StringFieldUpdateOperationsInput | string
+    xAccount?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10057,7 +10057,7 @@ export namespace Prisma {
     about: string
     logo: string
     website: string
-    xAccount: string
+    xAccount?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10069,7 +10069,7 @@ export namespace Prisma {
     about: string
     logo: string
     website: string
-    xAccount: string
+    xAccount?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10182,7 +10182,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     website?: StringFieldUpdateOperationsInput | string
-    xAccount?: StringFieldUpdateOperationsInput | string
+    xAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10194,7 +10194,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     website?: StringFieldUpdateOperationsInput | string
-    xAccount?: StringFieldUpdateOperationsInput | string
+    xAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

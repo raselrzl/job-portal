@@ -5,6 +5,9 @@ export const companySchema=z.object({
     location:z.string().min(1, "location must be defined"),
     about:z.string().min(10, "Please add some information about the company"),
     logo:z.string().min(1, "Please upload a logo"),
-    website:z.string().url("Please enter a valid url"),
+    website: z.string().regex(
+        /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/,
+        "Please enter a valid domain or URL (e.g. example.com or https://example.com)"
+      ),
     xAccount:z.string().optional()
 })
