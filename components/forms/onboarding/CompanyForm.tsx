@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { countryList } from "@/app/utils/countriesList";
 import { Textarea } from "@/components/ui/textarea";
+import { UploadDropzone } from "@/components/general/UploadThingReexported";
 export default function CompanyForm() {
   const form = useForm<z.infer<typeof companySchema>>({
     resolver: zodResolver(companySchema),
@@ -122,18 +123,46 @@ export default function CompanyForm() {
             />
           </div>
           <FormField
-              control={form.control}
-              name="about"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>About</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Tell us about your company ..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            control={form.control}
+            name="about"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>About</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Tell us about your company ..."
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="logo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company Logo</FormLabel>
+                <FormControl>
+                  <UploadDropzone
+                    endpoint="imageUploader"
+                    onClientUploadComplete={(res) => {
+                        field.onChange(res[0].url)
+                      console.log("Files: ", res);
+                      alert("Upload Completed");
+                    }}
+                    onUploadError={(error: Error) => {
+                      alert(`ERROR! ${error.message}`);
+                    }}
+                    className="ut-button:bg-primary hover:ut-button:bg-primary/80 ut-label:text-gray-400 ut-allowed-content:text-gray-600 border-primary"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </form>
       </Form>
     </div>
