@@ -1587,7 +1587,7 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     Company?: boolean | User$CompanyArgs<ExtArgs>
-    jobSeeker?: boolean | User$jobSeekerArgs<ExtArgs>
+    JobSeeker?: boolean | User$JobSeekerArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1635,7 +1635,7 @@ export namespace Prisma {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     Company?: boolean | User$CompanyArgs<ExtArgs>
-    jobSeeker?: boolean | User$jobSeekerArgs<ExtArgs>
+    JobSeeker?: boolean | User$JobSeekerArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1647,7 +1647,7 @@ export namespace Prisma {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       Company: Prisma.$CompanyPayload<ExtArgs> | null
-      jobSeeker: Prisma.$JobSeekerPayload<ExtArgs> | null
+      JobSeeker: Prisma.$JobSeekerPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2057,7 +2057,7 @@ export namespace Prisma {
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Company<T extends User$CompanyArgs<ExtArgs> = {}>(args?: Subset<T, User$CompanyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    jobSeeker<T extends User$jobSeekerArgs<ExtArgs> = {}>(args?: Subset<T, User$jobSeekerArgs<ExtArgs>>): Prisma__JobSeekerClient<$Result.GetResult<Prisma.$JobSeekerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    JobSeeker<T extends User$JobSeekerArgs<ExtArgs> = {}>(args?: Subset<T, User$JobSeekerArgs<ExtArgs>>): Prisma__JobSeekerClient<$Result.GetResult<Prisma.$JobSeekerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2552,9 +2552,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.jobSeeker
+   * User.JobSeeker
    */
-  export type User$jobSeekerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$JobSeekerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the JobSeeker
      */
@@ -8243,7 +8243,7 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
     Company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
-    jobSeeker?: XOR<JobSeekerNullableScalarRelationFilter, JobSeekerWhereInput> | null
+    JobSeeker?: XOR<JobSeekerNullableScalarRelationFilter, JobSeekerWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8260,7 +8260,7 @@ export namespace Prisma {
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
     Company?: CompanyOrderByWithRelationInput
-    jobSeeker?: JobSeekerOrderByWithRelationInput
+    JobSeeker?: JobSeekerOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8280,7 +8280,7 @@ export namespace Prisma {
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
     Company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
-    jobSeeker?: XOR<JobSeekerNullableScalarRelationFilter, JobSeekerWhereInput> | null
+    JobSeeker?: XOR<JobSeekerNullableScalarRelationFilter, JobSeekerWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8670,7 +8670,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     Company?: CompanyCreateNestedOneWithoutUserInput
-    jobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8687,7 +8687,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Company?: CompanyUncheckedCreateNestedOneWithoutUserInput
-    jobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8704,7 +8704,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Company?: CompanyUpdateOneWithoutUserNestedInput
-    jobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8721,7 +8721,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Company?: CompanyUncheckedUpdateOneWithoutUserNestedInput
-    jobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -10241,7 +10241,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    jobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCompanyInput = {
@@ -10257,7 +10257,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    jobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCompanyInput = {
@@ -10289,7 +10289,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    jobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompanyInput = {
@@ -10305,7 +10305,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    jobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutJobSeekerInput = {
@@ -10401,7 +10401,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
     Company?: CompanyCreateNestedOneWithoutUserInput
-    jobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -10417,7 +10417,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     Company?: CompanyUncheckedCreateNestedOneWithoutUserInput
-    jobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -10449,7 +10449,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     Company?: CompanyUpdateOneWithoutUserNestedInput
-    jobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -10465,7 +10465,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Company?: CompanyUncheckedUpdateOneWithoutUserNestedInput
-    jobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -10481,7 +10481,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     Company?: CompanyCreateNestedOneWithoutUserInput
-    jobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -10497,7 +10497,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     Company?: CompanyUncheckedCreateNestedOneWithoutUserInput
-    jobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
+    JobSeeker?: JobSeekerUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -10529,7 +10529,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     Company?: CompanyUpdateOneWithoutUserNestedInput
-    jobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -10545,7 +10545,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Company?: CompanyUncheckedUpdateOneWithoutUserNestedInput
-    jobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
+    JobSeeker?: JobSeekerUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {

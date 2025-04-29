@@ -17,10 +17,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 
-import Image from "next/image";/* 
-import { createJobSeeker } from "@/app/actions"; */
+import Image from "next/image";
 import { jobSeekerSchema } from "@/app/utils/zodSchemas";
 import { UploadDropzone } from "@/components/general/UploadThingReexported";
+import { createJobSeeker } from "@/app/actions";
 
 export default function JobSeekerForm() {
   const form = useForm<z.infer<typeof jobSeekerSchema>>({
@@ -31,23 +31,23 @@ export default function JobSeekerForm() {
       name: "",
     },
   });
-/*   const [pending, setPending] = useState(false);
+  const [pending, setPending] = useState(false);
   async function onSubmit(values: z.infer<typeof jobSeekerSchema>) {
     try {
       setPending(true);
       await createJobSeeker(values);
     } catch (error) {
       if (error instanceof Error && error.message !== "NEXT_REDIRECT") {
-        toast.error("Something went wrong. Please try again.");
+        console.log("Something went wrong. Please try again.");
       }
     } finally {
       setPending(false);
     }
-  } */
+  }
 
   return (
     <Form {...form}>
-      <form /* onSubmit={form.handleSubmit(onSubmit)} */ className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="name"
@@ -90,13 +90,13 @@ export default function JobSeekerForm() {
                 <div>
                   {field.value ? (
                     <div className="relative w-fit">
-                      {/* <Image
-                        src={PDFImage}
+                      <Image
+                        src="/pdf.png"
                         alt="Company Logo"
                         width={100}
                         height={100}
                         className="rounded-lg"
-                      /> */}
+                      />
                       <Button
                         type="button"
                         variant="destructive"
@@ -127,9 +127,9 @@ export default function JobSeekerForm() {
           )}
         />
 
-       {/*  <Button type="submit" className="w-full" disabled={pending}>
+        <Button type="submit" className="w-full" disabled={pending}>
           {pending ? "Submitting..." : "Continue"}
-        </Button> */}
+        </Button>
       </form>
     </Form>
   );

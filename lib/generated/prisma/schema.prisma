@@ -19,7 +19,7 @@ model User {
   sessions            Session[]
   userType            UserType?
   Company             Company?
-  jobSeeker           JobSeeker?
+  JobSeeker           JobSeeker?
   onboardingCompleted Boolean    @default(false)
   isAdmin             Boolean    @default(false)
   createdAt           DateTime   @default(now())
