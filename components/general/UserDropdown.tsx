@@ -23,14 +23,15 @@ export function UserDropdown({email, name, image}:iAppProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           className="h-auto p-0 hover:bg-transparent cursor-pointer"
         >
-          <Avatar>
+          {/* <Avatar>
             <AvatarImage src="" alt="Profile Image" />
             <AvatarFallback className="font-bold">{name.charAt(0)}</AvatarFallback>
-          </Avatar>
-          <ChevronDown size={16} strokeWidth={2} className="ml-2 opacity-60" />
+          </Avatar> */}
+          <p className="font-bold py-1.5">{name}</p>
+          <ChevronDown size={16} strokeWidth={2} className="" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="end">
@@ -43,7 +44,7 @@ export function UserDropdown({email, name, image}:iAppProps) {
             <DropdownMenuItem asChild>
                 <Link href="/favorites">
                     <Heart size={16} strokeWidth={2} className="opacity-60"/>
-                    <span>Favorite</span>
+                    <span>Saved</span>
                 </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
