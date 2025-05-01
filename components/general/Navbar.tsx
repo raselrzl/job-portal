@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button, buttonVariants } from "../ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { auth, signOut } from "@/app/utils/auth";
+import { UserDropdown } from "./UserDropdown";
 
 export default async function Navbar() {
   const session = await auth();
@@ -14,7 +15,25 @@ export default async function Navbar() {
           <span className="text-primary">Lynk</span>
         </h1>
       </Link>
-      <div className="flex items-center gap-4">
+     {/*  desktop navigation */}
+
+    <div className="hidden md:flex items-center gap-5">
+       <ThemeToggle />
+       <Link href="/post-job" className={buttonVariants({variant:"default", size:"lg"})}>Post job</Link>
+       {session?.user ? (
+          <UserDropdown email={session.user.email as string} name={session.user.name as string} image={session.user.image as string}/>
+          
+        ) : (
+          <Link href="/login" className={buttonVariants({variant:"outline", size:"sm"})}>Login</Link>
+        )}
+
+    </div>
+
+
+
+
+
+      {/* <div className="flex items-center gap-4">
         <ThemeToggle />
 
         {session?.user ? (
@@ -29,7 +48,7 @@ export default async function Navbar() {
         ) : (
           <Link href="/login" className={buttonVariants({variant:"default", size:"lg"})}>Login</Link>
         )}
-      </div>
+      </div> */}
     </nav>
   );
 }
