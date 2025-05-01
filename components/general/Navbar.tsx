@@ -19,7 +19,7 @@ export default async function Navbar() {
 
     <div className="hidden md:flex items-center gap-5">
        <ThemeToggle />
-       <Link href="/post-job" className={buttonVariants({variant:"default", size:"lg"})}>Post job</Link>
+       <Link href="/post-job" className={buttonVariants({variant:"default", size:"sm"})}>Post job</Link>
        {session?.user ? (
           <UserDropdown email={session.user.email as string} name={session.user.name as string} image={session.user.image as string}/>
           
