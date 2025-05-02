@@ -184,7 +184,7 @@ export function CreateJobForm({
                   </FormItem>
                 )}
               />
-
+ 
               <FormItem>
                 <FormLabel>Salary Range</FormLabel>
                 <FormControl>

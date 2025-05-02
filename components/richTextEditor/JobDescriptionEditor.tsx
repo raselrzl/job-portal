@@ -44,7 +44,7 @@ export default function JobDescriptionEditor({
   useEffect(() => {
     if (editor && field.value && editor.getHTML() !== field.value) {
       editor.commands.setContent(JSON.parse(field.value));
-    }
+    } 
   }, [editor, field.value]);
 
   return (
