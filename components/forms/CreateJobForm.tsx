@@ -31,7 +31,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { jobSchema } from "@/app/utils/zodSchemas";
 import { JobListingDurationSelector } from "../general/JobListingDurationSelector";
-/* import { createJob } from "@/app/actions"; */
+import { createJob } from "@/app/actions";
 import { SalaryRangeSelector } from "../general/SalaryRangeSelector";
 import JobDescriptionEditor from "../richTextEditor/JobDescriptionEditor";
 import BenefitsSelector from "../general/BenefitsSelector";
@@ -75,21 +75,23 @@ export function CreateJobForm({
   });
 
   const [pending, setPending] = useState(false);
-/*   async function onSubmit(values: z.infer<typeof jobSchema>) {
+  async function onSubmit(values: z.infer<typeof jobSchema>) {
     try {
       setPending(true);
 
       await createJob(values);
-    } catch {
-      toast.error("Something went wrong. Please try again.");
+    } catch (error) {
+      if (error instanceof Error && error.message !== "NEXT_REDIRECT") {
+        toast.error("Something went wrong (NEXT_REDIRECT). Please try again.");
+      }
     } finally {
       setPending(false);
     }
-  } */
+  }
   return (
     <Form {...form}>
       <form
-        /* onSubmit={form.handleSubmit(onSubmit)} */
+        onSubmit={form.handleSubmit(onSubmit)}
         className="col-span-1 lg:col-span-2 flex flex-col gap-8 mb-10"
       >
         <Card>
@@ -276,7 +278,7 @@ export function CreateJobForm({
                           <SelectLabel>Location</SelectLabel>
                           {countryList.map((country) => (
                             <SelectItem value={country.name} key={country.name}>
-                            {/*   <span>{country.flagEmoji}</span> */}
+                              {/*   <span>{country.flagEmoji}</span> */}
                               <span className="pl-2">{country.name}</span>
                             </SelectItem>
                           ))}
@@ -352,7 +354,7 @@ export function CreateJobForm({
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )}
+              )} 
             />
 
             <FormField
