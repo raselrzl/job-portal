@@ -4,6 +4,8 @@ import { headers } from "next/headers";
 import Stripe from "stripe";
 
 export async function POST(req: Request) {
+
+  console.log("web hook api was runned")
   const body = await req.text();
 
   const headersList = await headers();
@@ -50,6 +52,7 @@ export async function POST(req: Request) {
 
     // Update the job post status to PUBLISHED
     await prisma.jobPost.update({
+      
       where: {
         id: jobId,
         companyId: company?.Company?.id as string, // Ensure the job belongs to the company
