@@ -4,6 +4,23 @@ import { Button, buttonVariants } from "../ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { auth, signOut } from "@/app/utils/auth";
 import { UserDropdown } from "./UserDropdown";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
+import { Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export default async function Navbar() {
   const session = await auth();
@@ -15,40 +32,77 @@ export default async function Navbar() {
           <span className="text-primary">Lynk</span>
         </h1>
       </Link>
-     {/*  desktop navigation */}
+      {/*  desktop navigation */}
 
-    <div className="hidden md:flex items-center gap-5">
-       <ThemeToggle />
-       <Link href="/post-job" className={buttonVariants({variant:"default", size:"sm"})}>Post job</Link>
-       {session?.user ? (
-          <UserDropdown email={session.user.email as string} name={session.user.name as string} image={session.user.image as string}/>
-          
-        ) : (
-          <Link href="/login" className={buttonVariants({variant:"outline", size:"sm"})}>Login</Link>
-        )}
-
-    </div>
-
-
-
-
-
-      {/* <div className="flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-5">
         <ThemeToggle />
-
+        <Link
+          href="/post-job"
+          className={buttonVariants({ variant: "default", size: "sm" })}
+        >
+          Post job
+        </Link>
         {session?.user ? (
-          <form
-            action={async () => {
-              "use server";
-              await signOut({ redirectTo: "/" });
-            }}
-          >
-            <Button>Logout</Button>
-          </form>
+          <UserDropdown
+            email={session.user.email as string}
+            name={session.user.name as string}
+            image={session.user.image as string}
+          />
         ) : (
-          <Link href="/login" className={buttonVariants({variant:"default", size:"lg"})}>Login</Link>
+          <Link
+            href="/login"
+            className={buttonVariants({ variant: "outline", size: "sm" })}
+          >
+            Login
+          </Link>
         )}
-      </div> */}
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="md:hidden flex items-center gap-4">
+        <ThemeToggle />
+        {session?.user ? (
+          <UserDropdown
+            email={session.user.email as string}
+            name={session.user.name as string}
+            image={session.user.image as string}
+          />
+        ) : (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="mr-2">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuLabel className="">
+                {/* Job<span className="text-primary">Lynk</span> */}
+                <Link href="/" className="flex items-center gap-2">
+                  <Image
+                    src="/job2.png"
+                    height={15}
+                    width={25}
+                    alt="logo image"
+                  />
+                  <h1 className="text-md font-bold">
+                    <span className="text-primary">Lynk</span>
+                  </h1>
+                </Link>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/" className="">Find New Job</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/post-job">Post a Job</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/login">Login</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
+      </div>
     </nav>
   );
 }
