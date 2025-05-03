@@ -7,6 +7,8 @@ import { redirect } from "next/navigation";
 import { prisma } from "./utils/db";
 import arcjet, { detectBot, shield } from "./utils/arcjet";
 import { request } from "@arcjet/next";
+import { stripe } from "./utils/stripe";
+import { jobListingDurationPricing } from "./utils/pricingTiers";
 
 
 
@@ -101,12 +103,37 @@ export async function createJob(data:z.infer<typeof jobSchema>){
     },
     select: {
       id: true,
+      user:{
+        select:{
+          stripeCustomerId:true,
+        }
+      }
     },
   });
 
   if (!company?.id) {
     return redirect("/");
   }
+
+  let stripeCustomerId=company.user.stripeCustomerId;
+
+  if(!stripeCustomerId){
+    const customer =await stripe.customers.create({
+      email:user.email as string,
+      name:user.name as string,
+    });
+    stripeCustomerId=customer.id;
+    //update user with stripe customer id
+    await prisma.user.update({
+      where:{
+        id:user.id,
+      },
+      data:{
+        stripeCustomerId: customer.id,
+      }
+    })
+  }
+
   const jobPost=await prisma.jobPost.create({
       data: {
       companyId: company.id,
@@ -121,7 +148,40 @@ export async function createJob(data:z.infer<typeof jobSchema>){
 
       },
     });
-  
-    return redirect("/");
 
-}
+    const pricingTier=jobListingDurationPricing.find(
+      (tier)=>tier.days===validateData.ListingDuration
+    )
+    if (!pricingTier) {
+      throw new Error("Invalid listing duration selected");
+    }
+  
+    const session = await stripe.checkout.sessions.create({
+      customer: stripeCustomerId,
+      line_items: [
+        {
+          price_data: {
+            product_data: {
+              name: `Job Posting For- ${pricingTier.days} Days`,
+              description: pricingTier.description,
+              images: [
+                "https://dnzdmhv0py.ufs.sh/f/TNQbFWpxGpMNRjZ8Z5qW2qZ9w8NnpybE4HxvF0UBYgmPra1k",
+              ],
+            },
+            currency: "USD",
+            unit_amount: pricingTier.price * 100, // Convert to cents for Stripe
+          },
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      metadata: {
+        jobId: jobPost.id,
+      },
+      success_url: `${process.env.NEXT_PUBLIC_URL}/payment/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL}/payment/cancel`,
+    });
+  
+    return redirect(session.url as string);
+  }
+  
