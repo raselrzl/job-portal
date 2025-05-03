@@ -9680,13 +9680,13 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
+    stripeCustomerId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
-    stripeCustomerId?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeNullableFilter<"User"> | $Enums.UserType | null
     onboardingCompleted?: BoolFilter<"User"> | boolean
     isAdmin?: BoolFilter<"User"> | boolean
@@ -9696,7 +9696,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     Company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
     JobSeeker?: XOR<JobSeekerNullableScalarRelationFilter, JobSeekerWhereInput> | null
-  }, "id" | "email">
+  }, "id" | "email" | "stripeCustomerId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder

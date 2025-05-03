@@ -147,6 +147,9 @@ export async function createJob(data:z.infer<typeof jobSchema>){
       benefits: validateData.benefits,
 
       },
+      select:{
+        id:true,
+      }
     });
 
     const pricingTier=jobListingDurationPricing.find(
