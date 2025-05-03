@@ -14,6 +14,7 @@ export async function POST(req: Request) {
 
   let event: Stripe.Event;
   console.log("web hook api was runned")
+  console.log("Webhook Secret:", process.env.STRIPE_WEBHOOK_SECRET);
   try {
     event = stripe.webhooks.constructEvent(
       body,
