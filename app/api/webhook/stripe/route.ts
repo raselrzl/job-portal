@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const signature = headersList.get("Stripe-Signature") as string;
 
   let event: Stripe.Event;
-
+  console.log("web hook api was runned")
   try {
     event = stripe.webhooks.constructEvent(
       body,
