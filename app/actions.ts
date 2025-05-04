@@ -291,6 +291,10 @@ export async function deleteJobPost(jobId: string) {
       },
     },
   });
+  await inngest.send({
+    name:"job/calcel.expiration",
+    data:{jobId:jobId}
+  })
   return redirect("/my-jobs");
 }
 
