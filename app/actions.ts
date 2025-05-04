@@ -196,6 +196,13 @@ export async function createJob(data: z.infer<typeof jobSchema>) {
 export async function saveJobPost(jobId: string) {
   const user = await requireUser();
 
+
+  const req = await request();
+  const dicision = await aj.protect(req);
+  if (dicision.isDenied()) {
+    throw new Error("Forbidden");
+  }
+
   await prisma.savedJobPost.create({
     data: {
       jobId: jobId,
@@ -208,6 +215,12 @@ export async function saveJobPost(jobId: string) {
 
 export async function unsaveJobPost(savedJobPostId: string) {
   const user = await requireUser();
+
+  const req = await request();
+  const dicision = await aj.protect(req);
+  if (dicision.isDenied()) {
+    throw new Error("Forbidden");
+  }
 
   const data = await prisma.savedJobPost.delete({
     where: {

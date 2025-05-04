@@ -15,8 +15,8 @@ import { auth } from "@/app/utils/auth";
 import { getFlagEmoji } from "@/app/utils/countriesList";
 import { JsonToHtml } from "@/components/general/JsonToHtml";
 import { saveJobPost, unsaveJobPost } from "@/app/actions";
-import arcjet, { detectBot } from "@/app/utils/arcjet";
-import { request } from "@arcjet/next";
+import arcjet, { detectBot,tokenBucket } from "@/app/utils/arcjet";
+import { fixedWindow, request } from "@arcjet/next";
 import SaveJobButton from "@/components/general/SaveJobButton";
 import GeneralSubmitButton from "@/components/general/submitButtons";
 
@@ -25,7 +25,34 @@ const aj = arcjet.withRule(
     mode: "LIVE",
     allow: ["CATEGORY:SEARCH_ENGINE", "CATEGORY:PREVIEW"],
   })
+).withRule(
+    fixedWindow({
+        mode:"LIVE",
+        max:10,
+        window:"60s"
+    })
 );
+
+function getClient(session:boolean){
+    if(session){
+        return aj.withRule(
+            tokenBucket({
+                mode:"LIVE",
+                capacity:100,
+                interval: 60,
+                refillRate: 30,
+            })
+        )
+    } else{
+        return aj.withRule( 
+            tokenBucket({
+                mode:"LIVE",
+                capacity:100,
+                interval: 60,
+                refillRate: 10,
+        }))
+    }
+}
 
 async function getJob(jobId: string, userId?: string) {
   const [jobData, savedJob] = await Promise.all([
@@ -84,15 +111,15 @@ type Params = Promise<{ jobId: string }>;
 
 const JobIdPage = async ({ params }: { params: Params }) => {
   const { jobId } = await params;
+  
+  const session= await auth();
   const req = await request();
-
-  const decision = await aj.protect(req);
+  const decision = await getClient(!!session).protect(req, {requested: 10})
 
   if (decision.isDenied()) {
     throw new Error("forbidden");
   }
 
-  const session = await auth();
   const { jobData, savedJob } = await getJob(jobId, session?.user?.id);
   const locationFlag = getFlagEmoji(jobData.location);
 
@@ -139,7 +166,7 @@ const JobIdPage = async ({ params }: { params: Params }) => {
             ) : (
               <Button variant="outline" asChild>
                 <Link href="/login">
-                  <Heart className="size-4 mr-2" />
+                  <Heart className="size-4 mr-1" />
                   Save Job
                 </Link>
               </Button>
