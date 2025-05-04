@@ -23,8 +23,11 @@ export default async function Home({ searchParams }: SearchParamsProps) {
   )};location=${location}`;
 
   return (
-    <div className="grid grid-cols-3 gap-8">
-      <JobFilters />
+    <div className="container mx-auto py-8 px-4">
+    <div className="grid lg:grid-cols-3 lg:gap-8">
+     <div className="py-2">
+     <JobFilters />
+     </div>
       <div className="col-span-2 flex flex-col gap-6">
         <Suspense key={filterKey} fallback={<JobListingsLoading />}>
           <JobListings
@@ -34,6 +37,6 @@ export default async function Home({ searchParams }: SearchParamsProps) {
           />
         </Suspense>
       </div>
-    </div>
+    </div></div>
   );
 }
