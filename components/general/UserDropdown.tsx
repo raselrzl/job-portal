@@ -1,4 +1,4 @@
-import { ChevronDown, Heart, Layers2, LogOut } from "lucide-react";
+import { BookPlus, ChevronDown, Heart, Layers2, LogOut, PoundSterling } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import {
@@ -47,6 +47,10 @@ export function UserDropdown({email, name, image}:iAppProps) {
                     <span>Saved</span>
                 </Link>
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+            
+                <Link href="/post-job"><BookPlus size={16} strokeWidth={2} className="opacity-60"/>Post a Job</Link>
+              </DropdownMenuItem>
             <DropdownMenuItem asChild>
                 <Link href="/my-jobs">
                     <Layers2 size={16} strokeWidth={2} className="opacity-60"/>

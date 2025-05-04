@@ -12,7 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
-import { Menu } from "lucide-react";
+import { BookPlus, Menu, Search, User } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -91,13 +91,17 @@ export default async function Navbar() {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/" className="">Find New Job</Link>
+                <Link href="/" className=""><Search size={16} strokeWidth={2} className="opacity-60"/>
+                <span>Find a Job</span></Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/post-job">Post a Job</Link>
+                <Link href="/post-job"><BookPlus size={16} strokeWidth={2} className="opacity-60"/>
+                <span>Post a Job</span></Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/login">Login</Link>
+                <Link href="/login"><User size={16} strokeWidth={2} className="opacity-60"/>
+                <span>Login</span></Link>
+                
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
