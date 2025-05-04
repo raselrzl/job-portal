@@ -11,6 +11,7 @@ import { stripe } from "./utils/stripe";
 import { jobListingDurationPricing } from "./utils/pricingTiers";
 import { inngest } from "./utils/inngest/client";
 import { revalidatePath } from "next/cache";
+import { toast } from "sonner";
 
 const aj = arcjet
   .withRule(
@@ -242,6 +243,12 @@ export async function updateJobPost(
 ) {
   const user = await requireUser();
 
+  const req = await request();
+  const dicision = await aj.protect(req);
+  if (dicision.isDenied()) {
+    throw new Error("Forbidden");
+  }
+
   const validatedData = jobSchema.parse(data);
 
   await prisma.jobPost.update({
@@ -265,3 +272,18 @@ export async function updateJobPost(
 
   return redirect("/my-jobs");
 }
+
+export async function deleteJobPost(jobId: string) {
+  const user = await requireUser();
+
+  await prisma.jobPost.delete({
+    where: {
+      id: jobId,
+      Company: {
+        userId: user.id,
+      },
+    },
+  });
+  return redirect("/my-jobs");
+}
+
