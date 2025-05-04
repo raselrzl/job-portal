@@ -17,7 +17,7 @@ import { JsonToHtml } from "@/components/general/JsonToHtml";
 import { saveJobPost, unsaveJobPost } from "@/app/actions";
 import arcjet, { detectBot } from "@/app/utils/arcjet";
 import { request } from "@arcjet/next";
-import { GeneralSubmitButton, SaveJobButton } from "@/components/general/submitButtons";
+import SaveJobButton, { GeneralSubmitButton } from "@/components/general/submitButtons";
 
 const aj = arcjet.withRule(
   detectBot({
