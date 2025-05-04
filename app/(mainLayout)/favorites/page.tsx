@@ -4,7 +4,7 @@ import React from "react";
 import { JobCard } from "@/components/general/JobCard";
 
 import { prisma } from "@/app/utils/db";
-import { requireUser } from "../utils/requireUser";
+import { requireUser } from "../../utils/requireUser";
 
 async function getFavorites(userId: string) {
   const data = await prisma.savedJobPost.findMany({
