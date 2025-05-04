@@ -12,6 +12,7 @@ import { jobListingDurationPricing } from "./utils/pricingTiers";
 import { inngest } from "./utils/inngest/client";
 import { revalidatePath } from "next/cache";
 import { toast } from "sonner";
+import { getPrismaClient } from "@/lib/generated/prisma/runtime/library";
 
 const aj = arcjet
   .withRule(
@@ -275,7 +276,13 @@ export async function updateJobPost(
 
 export async function deleteJobPost(jobId: string) {
   const user = await requireUser();
+ 
 
+  const req = await request();
+  const dicision = await aj.protect(req);
+  if (dicision.isDenied()) {
+    throw new Error("Forbidden");
+  }
   await prisma.jobPost.delete({
     where: {
       id: jobId,

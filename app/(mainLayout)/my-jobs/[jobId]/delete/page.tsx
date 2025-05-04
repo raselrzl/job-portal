@@ -1,4 +1,5 @@
 import { deleteJobPost } from "@/app/actions";
+import { requireUser } from "@/app/utils/requireUser";
 import GeneralSubmitButton from "@/components/general/submitButtons";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -19,6 +20,7 @@ type Params = Promise<{ jobId: string }>;
 
 const DeleteJobPage = async ({ params }: { params: Params }) => {
   const { jobId } = await params;
+  await requireUser()
   return (
     <Card className="max-w-lg mx-auto w-full">
       <CardHeader>
