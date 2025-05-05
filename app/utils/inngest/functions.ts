@@ -3,10 +3,11 @@ import { inngest } from "./client";
 
 export const handleJobExpiration = inngest.createFunction(
   { id: "job-expiration", cancelOn:[
-    {event:"job/calcel.expiration",
-    if:"event.data.jobId==async.data.jobId"
+    {event:"job/cancel.expiration",
+    if:"event.data.jobId == async.data.jobId"
     }
   ] },
+
   { event: "job/created" },
   async ({ event, step }) => {
     const { jobId, expirationDays } = event.data;

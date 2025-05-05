@@ -1,5 +1,5 @@
 import { prisma } from "@/app/utils/db";
-/* import { PaginationComponent } from "./PaginationComponent"; */
+import { PaginationComponent } from "./PaginationComponent";
 import { JobPostStatus } from "@/lib/generated/prisma";
 import { EmptyState } from "./EmptyState";
 import { JobCard } from "./JobCard";
@@ -93,9 +93,9 @@ export default async function JobListings({
         />
       )}
 
-    {/*   <div className="flex justify-center mt-6">
+      <div className="flex justify-center mt-6">
         <PaginationComponent totalPages={totalPages} currentPage={page} />
-      </div> */}
+      </div>
     </>
   );
 }
