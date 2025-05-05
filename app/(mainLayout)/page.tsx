@@ -24,19 +24,20 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   return (
     <div className="container mx-auto py-8 px-4">
-    <div className="grid lg:grid-cols-3 lg:gap-8">
-     <div className="py-2">
-     <JobFilters />
-     </div>
-      <div className="col-span-2 flex flex-col gap-6">
-        <Suspense key={filterKey} fallback={<JobListingsLoading />}>
-          <JobListings
-            currentPage={currentPage}
-            jobTypes={jobTypes}
-            location={location}
-          />
-        </Suspense>
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="px-2 col-span-3 md:col-span-1 ">
+          <JobFilters />
+        </div>
+        <div className="col-span-3 md:col-span-2 flex flex-col ">
+          <Suspense key={filterKey} fallback={<JobListingsLoading />}>
+            <JobListings
+              currentPage={currentPage}
+              jobTypes={jobTypes}
+              location={location}
+            />
+          </Suspense>
+        </div>
       </div>
-    </div></div>
+    </div>
   );
 }

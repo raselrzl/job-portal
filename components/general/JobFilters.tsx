@@ -65,23 +65,24 @@ export function JobFilters() {
   const handleLocationChange = (location: string) => {
     router.push(`?${createQueryString("location", location)}`);
   };
-
+  /* 
   const handleMinSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     router.push(`?${createQueryString("minSalary", e.target.value)}`);
   };
 
   const handleMaxSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     router.push(`?${createQueryString("maxSalary", e.target.value)}`);
-  };
+  }; */
 
   const clearFilters = () => {
     router.push("/");
   };
 
   return (
-    <Card className="col-span-1 h-fit">
+    <>
+    <Card className="col-span-1 hidden md:block">
       <CardHeader className="space-y-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center ">
           <CardTitle className="text-2xl font-semibold">Filter</CardTitle>
           <Button
             variant="destructive"
@@ -93,12 +94,11 @@ export function JobFilters() {
             <X className="h-4 w-4" />
           </Button>
         </div>
-        <Separator />
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
           <Label className="text-lg font-semibold">Type of Job</Label>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
             {jobTypes.map((type) => (
               <div key={type} className="flex items-center space-x-2">
                 <Checkbox
@@ -118,9 +118,30 @@ export function JobFilters() {
             ))}
           </div>
         </div>
-        <Separator />
-        <div className="space-y-4">
-          <Label className="text-lg font-semibold">Location</Label>
+        <Separator className=""/>
+        <div className="space-y-4 block md:hidden">
+          <Label className="text-lg font-semibold hidden md:block">Type of Job</Label>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
+            {jobTypes.map((type) => {
+              const isActive = currentJobTypes.includes(type);
+              return (
+                <Button
+                  key={type}
+                  variant={isActive ? "secondary" : "outline"}
+                  size="sm"
+                  className="text-xs"
+                  onClick={() => handleJobTypeChange(type, !isActive)}
+                >
+                  {type}
+                </Button>
+              );
+            })}
+          </div>
+          <Separator className=""/>
+        </div>
+        <div className="flex justify-between items-center">
+         <div className="space-y-4">
+         <Label className="text-lg font-semibold">Location</Label>
           <Select value={currentLocation} onValueChange={handleLocationChange}>
             <SelectTrigger>
               <SelectValue placeholder="Select Location" />
@@ -143,9 +164,9 @@ export function JobFilters() {
               </SelectGroup>
             </SelectContent>
           </Select>
+         </div>         
         </div>
-        <Separator />
-        <div className="space-y-4">
+        {/*  <div className="space-y-4">
           <Label className="text-lg font-semibold">Salary Range</Label>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -175,8 +196,108 @@ export function JobFilters() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </CardContent>
+
+     
     </Card>
+     <div className="block md:hidden">
+     <Card className="col-span-1 shadow-none border-none p-0 ">
+     <CardContent className="">
+       <div className="space-y-2">
+         <div className="grid grid-cols-4 gap-2">
+           {jobTypes.map((type) => {
+             const isActive = currentJobTypes.includes(type);
+             return (
+               <Button
+                 key={type}
+                 variant={isActive ? "default" : "outline"}
+                 size="sm"
+                 className="text-xs rounded-full"
+                 onClick={() => handleJobTypeChange(type, !isActive)}
+               >
+                 {type}
+               </Button>
+             );
+           })}
+         </div>
+         <Separator className="mb-2"/>
+       </div>
+       <div className="flex justify-between items-center">
+        <div className="space-y-4">
+        <Label className="text-lg font-semibold hidden md:block">Location</Label>
+         <Select value={currentLocation} onValueChange={handleLocationChange}>
+           <SelectTrigger>
+             <SelectValue placeholder="Select Location" />
+           </SelectTrigger>
+           <SelectContent>
+             <SelectGroup>
+               <SelectLabel>Worldwide</SelectLabel>
+               <SelectItem value="worldwide">
+                 <span>🌍</span>
+                 <span className="pl-2">Worldwide / Remote</span>
+               </SelectItem>
+             </SelectGroup>
+             <SelectGroup>
+               {countryList.map((country) => (
+                 <SelectItem value={country.name} key={country.name}>
+                   <span className="pl-2">{country.name}</span>
+                 </SelectItem>
+               ))}
+             </SelectGroup>
+           </SelectContent>
+         </Select>
+        </div>
+        <Button
+           variant="destructive"
+           size="sm"
+           className="h-8"
+           onClick={clearFilters}
+         >
+           <span className="mr-2">Clear all</span>
+           <X className="h-4 w-4" />
+         </Button>
+      
+        
+       </div>
+       {/*  <div className="space-y-4">
+         <Label className="text-lg font-semibold">Salary Range</Label>
+         <div className="grid grid-cols-2 gap-4">
+           <div className="space-y-2">
+             <Label htmlFor="minSalary" className="text-sm">
+               Min Salary
+             </Label>
+             <Input
+               id="minSalary"
+               type="number"
+               placeholder="0"
+               value={currentMinSalary}
+               onChange={handleMinSalaryChange}
+               className="w-full"
+             />
+           </div>
+           <div className="space-y-2">
+             <Label htmlFor="maxSalary" className="text-sm">
+               Max Salary
+             </Label>
+             <Input
+               id="maxSalary"
+               type="number"
+               placeholder="500,000"
+               value={currentMaxSalary}
+               onChange={handleMaxSalaryChange}
+               className="w-full"
+             />
+           </div>
+         </div>
+       </div> */}
+     </CardContent>
+
+     <div>
+       
+     </div>
+   </Card>
+     </div>
+     </>
   );
 }
