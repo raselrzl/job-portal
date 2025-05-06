@@ -31,7 +31,7 @@ const companies = [
 
 export default function CompanyList() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
       <h1 className="text-2xl md:text-3xl font-bold mb-8 text-foreground text-center">Top Companies Hiring Now</h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

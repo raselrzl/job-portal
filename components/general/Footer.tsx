@@ -2,36 +2,38 @@
 
 import Link from 'next/link';
 
-const Footer = () => {
+export default function Footer() {
   const footerLinks = [
-    'Career advice',
-    'Browse jobs',
-    'Browse companies',
-    'Salaries',
-    'Our Events',
-    'Work at JobFynd',
-    'Countries',
-    'About Us',
-    'Help',
-    'Privacy Policy',
-    'Accessibility',
-    'Terms'
+    { label: 'Career advice', href: '/careeradvice' },
+    { label: 'Browse jobs', href: '/' },
+    { label: 'Browse companies', href: '/companies' },
+    { label: 'Salaries', href: '/salaries' },
+    { label: 'Our Events', href: '/events' },
+    { label: 'Work at JobFynd', href: '/careers' },
+    { label: 'Countries', href: '/locations' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Help', href: '/help' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Accessibility', href: '/accessibility' },
+    { label: 'Terms', href: '/terms' },
   ];
 
   return (
-    <footer className="w-full mt-12 border-t">
-      <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
-        {footerLinks.map((label, index) => (
-          <Link key={index} href="#" className="hover:underline">
+    <footer className="border-t mt-10 py-8 text-sm text-muted-foreground">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {footerLinks.map(({ label, href }) => (
+          <Link
+            key={label}
+            href={href}
+            className="hover:text-primary transition-colors duration-150"
+          >
             {label}
           </Link>
         ))}
       </div>
-      <div className="text-center text-xs py-4">
-        © 2025 JobFynd
+      <div className="mt-6 text-center text-xs text-muted-foreground">
+        © {new Date().getFullYear()} JobFynd — All rights reserved.
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
