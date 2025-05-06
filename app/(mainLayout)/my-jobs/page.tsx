@@ -65,7 +65,7 @@ const MyJobsPage = async () => {
   const data = await getJobs(session.id as string);
 
   return (
-    <div className="mx-w-7xl mx-auto md:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {data.length === 0 ? (
         <EmptyState
           title="No job posts found"
@@ -75,7 +75,7 @@ const MyJobsPage = async () => {
         />
       ) : (
         <div className="p-4 lg:px-30">
-            <Card>
+        <Card>
           <CardHeader>
             <CardTitle>My Jobs</CardTitle>
             <CardDescription>

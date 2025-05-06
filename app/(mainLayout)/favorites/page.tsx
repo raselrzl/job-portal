@@ -53,8 +53,8 @@ const FavoritesPage = async () => {
   }
 
   return (
-    <div className="mx-w-7xl mx-auto md:px-6 lg:px-8">
-      <div className="grid grid-cols-1 mt-5 gap-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden py-8">
+      <div className="grid grid-cols-1 gap-4">
         {favorites.map((favorite) => (
           <JobCard job={favorite.job} key={favorite.job.id} />
         ))}
