@@ -210,8 +210,8 @@ const JobIdPage = async ({ params }: { params: Params }) => {
         </div>
 
         {/* Sidebar */}
-        <div className="flex flex-col">
-        <div className="space-y-6">
+        <div className="">
+        <div className="space-y-6 flex flex-col-reverse md:flex-col">
           {/* Apply Now Card */}
           <Card className="p-6">
             <div className="space-y-4">

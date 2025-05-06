@@ -38,7 +38,7 @@ export function JobCard({ job }: iAppProps) {
                 alt={job.Company.name}
                 width={48}
                 height={48}
-                className="size-12 rounded-lg"
+                className="size-12 rounded-lg hidden md:block"
               />
             ) : (
               <div className="bg-red-500 size-12 rounded-lg flex items-center justify-center">
@@ -84,7 +84,7 @@ export function JobCard({ job }: iAppProps) {
             </div>
           </div>
           <div className="!mt-5">
-            <p className="text-base text-muted-foreground line-clamp-2">
+            <p className="text-base text-muted-foreground line-clamp-1">
               {job.Company.about}
             </p>
           </div>
