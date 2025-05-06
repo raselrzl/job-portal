@@ -31,7 +31,7 @@ const CareerAdvice = () => {
       </div>
 
       <div className="mt-8 text-center">
-        <Link href="/jobs">
+        <Link href="/">
           <button className="bg-primary text-primary-foreground px-6 py-3 rounded-md text-base font-medium hover:bg-primary/90 transition">
             Explore Jobs on Jobfynd
           </button>
