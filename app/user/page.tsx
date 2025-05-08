@@ -70,9 +70,9 @@ async function getAllUsersWithRoles() {
 const AllUsers = async () => {
   const session = await requireUser();
 
-  if (!ime(session.email)) {
-    redirect("/");
-  }
+  {!ime(session.email) && (
+    redirect("/")
+  )}
   const data = await getAllUsersWithRoles();
 
   const companies = data.filter(

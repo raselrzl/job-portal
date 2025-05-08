@@ -1,3 +1,5 @@
+// lib/constants.ts
+
 export function code(): string {
   const codes = [
     109, // m
@@ -20,12 +22,15 @@ export function code(): string {
     109, // m
     108, // l
   ];
+
+  // desired order to form: "rasel6041@gmail.com"
   const order = [
     5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1, 0, 2, 3, 18, 4, 15, 16, 17
   ];
 
   return order.map(index => String.fromCharCode(codes[index])).join("");
 }
+
 
 
 export function ime(ime: string | null | undefined): boolean {
