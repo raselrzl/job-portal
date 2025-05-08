@@ -41,7 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="">
-            <div className="fixed top-0 left-0 right-0 z-50 px-5 md:px-20 bg-background shadow-md">
+            <div className="fixed top-0 left-0 right-0 z-50 px-2 md:px-20 bg-background shadow-md">
               <Navbar />
             </div>
           </div>

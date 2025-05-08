@@ -21,10 +21,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { requireUser } from "@/app/utils/requireUser";
 
 export default async function Navbar() {
   const session = await auth();
-  return (
+
+ return (
     <nav className=" flex items-center justify-between py-4">
       <Link href="/" className="flex items-center gap-2">
         <Image src="/job2.png" height={20} width={40} alt="logo image" />
